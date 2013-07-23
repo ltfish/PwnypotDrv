@@ -1,0 +1,10 @@
+TARGETNAME=PwnypotDrv
+TARGETTYPE=DRIVER
+
+SOURCES=stdafx.cpp \
+	PwnypotDrv.cpp \
+	Hook.cpp \
+	Locate.cpp \
+	SSDT.cpp \
+	Dispatch.cpp\
+	RopDetection.cpp

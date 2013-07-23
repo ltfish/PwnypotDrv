@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{16B6C430-9C29-4C4A-901B-7A463114B71D}</ProjectGuid>
+    <Keyword>MakeFileProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeBuildCommandLine>call $(WDKPATH)\bin\setenv.bat $(WDKPATH) chk wxp
+cd /d $(ProjectDir)
+build</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>rmdir /s /q $(ProjectDir)\objchk_wxp_x86</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>rmdir /s /q $(ProjectDir)\objchk_wxp_x86
+call $(WDKPATH)\bin\setenv.bat $(WDKPATH) chk wxp
+cd /d $(ProjectDir)
+build</NMakeReBuildCommandLine>
+    <IntDir>$(ProjectDir)\objchk_wxp_x86</IntDir>
+    <OutDir>$(ProjectDir)\objchk_wxp_x86</OutDir>
+    <NMakeOutput>$(ProjectDir)\objchk_wxp_x86\i386\PwnypotDrv.sys</NMakeOutput>
+    <NMakePreprocessorDefinitions>WIN32;_CONSOLE;_X86_;_DDK_;_DEBUG;DBG=1;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>$(WDKPATH)\inc\ddk;$(WDKPATH)\inc\api;$(WDKPATH)\inc\crt;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeBuildCommandLine>call $(WDKPATH)\bin\setenv.bat $(WDKPATH) fre wxp
+cd /d $(ProjectDir)
+build</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>rmdir /s /q $(ProjectDir)\objfre_wxp_x86</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>rmdir /s /q $(ProjectDir)\objfre_wxp_x86
+call $(WDKPATH)\bin\setenv.bat $(WDKPATH) fre wxp
+cd /d $(ProjectDir)
+build</NMakeReBuildCommandLine>
+    <IntDir>$(ProjectDir)\objfre_wxp_x86</IntDir>
+    <OutDir>$(ProjectDir)\objfre_wxp_x86</OutDir>
+    <NMakeOutput>$(ProjectDir)\objfre_wxp_x86\i386\PwnypotDrv.sys</NMakeOutput>
+    <NMakePreprocessorDefinitions>WIN32;_CONSOLE;_X86_;_DDK_;_NDEBUG;DBG=0;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>$(WDKPATH)\inc\ddk;$(WDKPATH)\inc\api;$(WDKPATH)\inc\crt;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="FunctionDef.h" />
+    <ClInclude Include="Hook.h" />
+    <ClInclude Include="Kernel.h" />
+    <ClInclude Include="Locate.h" />
+    <ClInclude Include="RopDetection.h" />
+    <ClInclude Include="SSDT.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="VisualDDKHelpers.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Dispatch.cpp" />
+    <ClCompile Include="Hook.cpp" />
+    <ClCompile Include="Locate.cpp" />
+    <ClCompile Include="PwnypotDrv.cpp" />
+    <ClCompile Include="RopDetection.cpp" />
+    <ClCompile Include="SSDT.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(ProjectDir)\sources" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
